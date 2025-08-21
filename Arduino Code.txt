@@ -1,0 +1,39 @@
+Arduino Code
+
+ARDUINO CODE  
+#include <LiquidCrystal.h> 
+ 
+// LCD pins: RS, EN, D4, D5, D6, D7 LiquidCrystal lcd(7, 8, 9, 10, 11, 12); 
+ 
+const int tempPin = A0;     // LM35 temp sensor const int fanPin  = 3;      // PWM output to MOSFET Gate const float threshold = 30.0; // Temperature threshold in °C 
+ 
+void setup() { 
+  pinMode(fanPin, OUTPUT);   lcd.begin(16, 2);   lcd.print("Fan Control Init");   delay(1500);   lcd.clear(); 
+} 
+ 
+void loop() { 
+  // Read temperature from LM35 
+  float temp = analogRead(tempPin) * 5.0 / 1023.0 * 100.0; 
+ 
+  int fanSpeed; 
+ 
+  // Logic: Low speed if ≤ 30°C, high speed if > 30°C   if (temp <= threshold) {     fanSpeed = 100;  // Low speed 
+  } else {     fanSpeed = 255;  // High speed 
+  } 
+ 
+  analogWrite(fanPin, fanSpeed); 
+ 
+  int speedPercent = map(fanSpeed, 0, 255, 0, 100); 
+ 
+  // --- LCD Display ---   lcd.setCursor(0, 0);   lcd.print("Temp: ");   lcd.print(temp, 1);   lcd.print((char)223); 
+  lcd.print("C   "); 
+ 
+  lcd.setCursor(0, 1);   lcd.print("Fan: ");   if (fanSpeed > 0) {     lcd.print("ON "); 
+  } else { 
+    lcd.print("OFF"); 
+  } 
+ 
+  lcd.print(" Spd: ");   lcd.print(speedPercent);   lcd.print("%"); 
+ 
+  delay(500); 
+} 

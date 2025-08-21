@@ -1,0 +1,36 @@
+Components 
+ 
+● Arduino Nano:  
+Arduino Nano is a popular microcontroller board designed for hobbyists, students, and professionals who want to build their own electronic projects. It is based on the ATmega328P microcontroller and uses an open-source platform that allows users to create, share, and modify electronic designs.  
+Some of the key specifications of the Arduino UNO board are:  
+i.	Microcontroller: ATmega328P 
+ii.	Operating Voltage: 5V iii. Input Voltage: 7-12V  iv. Digital I/O Pins: 14 (of which 6 provide PWM output) v. Analog Input Pins: 6 vi. Flash Memory: 32 KB (of which 0.5 KB is used by bootloader) vii. SRAM: 2 KB viii. Clock Speed: 16 MHz  
+ix. USB Interface: Type A  
+
+Lm35  
+LM35 is a temperature sensor that outputs an analog signal which is proportional to the instantaneous temperature. The output voltage can easily be interpreted to obtain a temperature reading in Celsius. The advantage of lm35 over thermistor is it does not require any external calibration.  
+10 mV voltage difference is proportional to 1 degree celsius  
+  
+N-CHANNEL MOSFET  
+             The IRF540N is an N-channel MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor) commonly used in power switching applications. It has three pins and operates as a switch, allowing you to control high-power devices (like a fan) with a low-power control signal (from the Arduino). 
+Why Use an IRF540N in Your Project? 
+•	High Power Handling: The IRF540N can handle relatively high currents (up to 33A), making it suitable for controlling larger loads like a DC fan. 
+•	Efficient Switching: The MOSFET acts as an efficient switch, consuming very little power to control large currents. This is important for energy-efficient operation. 
+•	Logic-Level Gate Drive: The IRF540N can be controlled directly by the Arduino since its Gate threshold voltage is low enough to be activated by the 5V logic from the Arduino. 
+
+Potentiometer  
+A potentiometer is a manually adjustable variable resistor with 3 terminals. Two of the terminals are connected to the opposite ends of a resistive element, and the third terminal connects to a sliding contact, called a wiper, moving over the resistive element.  We used potentiometer for controlling brightness of LCD screen 
+
+
+  
+LCD SCREEN 
+An LCD screen (Liquid Crystal Display) in a temperature-controlled DC fan serves as a visual interface to display important information like current temperature, fan speed, or status indicators. 
+1.	Temperature Sensing: 
+	A sensor like LM35 outputs an analog voltage proportional to the temperature.
+	This signal goes to the ADC (Analog-to-Digital Converter) in the microcontroller. 
+2.	Data Processing: 
+	The microcontroller converts this voltage to a temperature value (in °C). 
+	It then makes decisions — e.g., if temp > 30°C, turn on the fan. 
+3.	Display Output: 
+	The microcontroller sends formatted text (like Temp: 32°C, Fan Speed: 75%) to the LCD using digital signals. 
+	For common LCDs like the 16x2 LCD, this is done using parallel communication (4-bit or 8-bit mode). 

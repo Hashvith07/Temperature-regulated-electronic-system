@@ -1,0 +1,36 @@
+Explanation
+1. Temperature Sensing (LM35): 
+o	The LM35 temperature sensor continuously measures the ambient temperature. 
+o	It provides an analog output, where 1°C is equivalent to 10mV. 
+
+2.	Arduino Nano Processing: 
+o	The Arduino Nano reads the temperature signal from the LM35 sensor via an analog input pin. o The temperature is converted from the analog voltage value to a readable Celsius value. 
+
+3.	Threshold Setting (Fixed at 30°C): 
+o	A pre-set threshold of 30°C is used to decide when to change fan speed. 
+o	If the temperature is below or equal to 30°C, the fan runs at a low speed (PWM value set to ~100). 
+o	If the temperature is above 30°C, the fan runs at high speed (PWM value set to 255). 
+
+4.	Fan Speed Control (MOSFET): 
+o	The MOSFET acts as a switch to control the fan's operation. 
+o	Using PWM (Pulse Width Modulation) on the MOSFET gate, the Arduino adjusts the fan's speed based on the temperature. 
+o	Low speed is set for temperatures below 30°C, and high speed for temperatures above 30°C. 
+
+5.	LCD Display: 
+o	The 16x2 LCD continuously displays: 
+▪	Current temperature 
+▪	Fan status (ON/OFF) 
+▪	Fan speed (in %) o 	This allows real-time monitoring of the system's performance. 
+
+6.	Power Supply: 
+o	The fan is powered using an external 12V supply. 
+o	The Arduino Nano is powered through its 5V pin (via USB or an external power supply). 
+  
+
+In Summary: 
+The system uses a temperature sensor to read the environment temperature, compares it to a set threshold, and controls the fan speed accordingly using a MOSFET. The status is displayed on the LCD, providing an efficient and automated temperature regulation system for the fan. 
+ 
+Conclusion  
+This Temperature-Controlled DC Fan project demonstrates an effective and efficient way to regulate fan speed based on ambient temperature using an LM35 sensor, an Arduino Nano, and a MOSFET for switching the fan. By setting a threshold temperature (30°C in this case), the system automatically adjusts the fan speed: low speed when the temperature is below or equal to 30°C, and high speed when it exceeds 30°C. 
+The LCD display provides real-time feedback, showing the current temperature, fan status (ON/OFF), and fan speed percentage, allowing for easy monitoring and control. 
+This project is ideal for applications that require temperature-sensitive fan control, such as in computer cooling systems, climate control for small spaces, or even embedded systems that require automatic fan operation. It showcases how simple electronics can be used to automate everyday tasks and improve energy efficiency. 
